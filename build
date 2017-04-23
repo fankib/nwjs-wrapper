@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# build:
+/usr/bin/zip app.nw package.json index.html
+
+# run:
+#/usr/bin/nw app.nw
+

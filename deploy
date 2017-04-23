@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# PROPERTIES
+APP_NAME="appname"
+NWJS="/opt/nwjs"
+
+# END PROPERTIES
+
+# build
+./build
+
+# build runnable:
+rm testone
+cat $NWJS/nw app.nw > $APP_NAME && chmod +x $APP_NAME 
+
+# update target:
+rm -r target
+mkdir target
+mv $APP_NAME ./target/
+
+# prepare packaging
+cp -r $NWJS/* target
+rm target/nw
+
+# package app
+ln -s ./target/ $APP_NAME
+tar czvf $APP_NAME.tar.gz $APP_NAME/*
+rm $APP_NAME
+

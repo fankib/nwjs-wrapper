@@ -1,0 +1,6 @@
+# Product of build-script
+app.nw
+
+# Product of deploy-script
+target/
+*.tar.gz

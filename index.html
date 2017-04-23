@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hello World</title>
+	</head>
+	<body>
+		<script>
+var gui = require('nw.gui');
+var menu = gui.Menu();
+
+// add items:
+menu.append(new gui.MenuItem({label: 'Open File'}));
+menu.append(new gui.MenuItem({
+	label: 'Save File',
+	click: function(){
+		var element = document.createElement('div');
+		element.appendChild(document.createTextNode('Saved'));
+		document.body.appendChild(element);
+	}
+}));
+
+// get the current window:
+var win = gui.Window.get();
+var menubar = new gui.Menu({type: 'menubar'});
+
+menubar.append(new gui.MenuItem({label: 'File', submenu: menu}));
+
+win.menu = menubar;
+
+
+// node.js:
+var os = require('os');
+document.write('Our computer is: ' + os.platform());
+
+		</script>
+		<h1>Hello World, NWJS</h1>
+	</body>
+</html>
